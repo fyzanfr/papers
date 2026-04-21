@@ -1,0 +1,7 @@
+__pycache__/
+*.pth
+*.pyc
+.venv/
+data/
+# Arch/Linux specific
+.DS_Store
