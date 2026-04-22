@@ -29,6 +29,8 @@ def main():
 
     train_loader, test_loader = get_loaders(cfg, args.data_dir)
 
+    images, labels = next(iter(train_loader))
+    print(f'Image Shape : {images.shape}')
 
 
 if __name__ == '__main__':
