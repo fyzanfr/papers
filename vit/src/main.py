@@ -3,7 +3,7 @@ import os
 import numpy as np
 from data_loading import unpickle, get_loaders
 from config import get_miniVit_config
-
+from model import Embeddings
 
 def main():
 
@@ -29,9 +29,10 @@ def main():
 
     train_loader, test_loader = get_loaders(cfg, args.data_dir)
 
+    in_phase = Embeddings(cfg)
     images, labels = next(iter(train_loader))
-    print(f'Image Shape : {images.shape}')
-
+    emb_output = in_phase(images)
+    print(f'Embeddings Shape: {emb_output.shape}')
 
 if __name__ == '__main__':
     main()
