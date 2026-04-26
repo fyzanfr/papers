@@ -3,7 +3,7 @@ import os
 import numpy as np
 from data_loading import unpickle, get_loaders
 from config import get_miniVit_config
-from model import Embeddings
+from model import Embeddings, Attention
 
 def main():
 
@@ -33,6 +33,10 @@ def main():
     images, labels = next(iter(train_loader))
     emb_output = in_phase(images)
     print(f'Embeddings Shape: {emb_output.shape}')
+
+    attn = Attention(cfg)
+    attn_out, attn_wgts = attn(emb_output)
+    print(f"Attention_output : {attn_out.shape} | Attention_Weights : {attn_wgts.shape}")
 
 if __name__ == '__main__':
     main()
